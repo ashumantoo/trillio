@@ -1,0 +1,109 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: var(--color-Grey-light-2);
+  box-shadow: var(--dark-shadow);
+  min-height: 50rem;
+
+  @media only screen and (max-width:$bp-largest) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-Grey-light-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width:$bp-smallest) {
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 11rem;
+  }
+}
+
+.content {
+  display: flex;
+
+  @media only screen and (max-width:$bp-medium) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  background-color: var(--color-Grey-dark-1);
+  /*
+  1st 0 -> flex-grow - we don't want to grow the element besides the width we define that's why flex-grow:0
+  2nd 0 -> flex-shrink - we don't want to shrink the element, that's why the flex-shrink:0
+  18%   -> flex-basis - define the width of the flex item
+  NOTE: To use this flex: 0 0 18%, parent element must be a flex container
+  */
+  flex: 0 0 18%;
+
+  //This line of code is responsible for adding space between side nav and copyright text
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-view {
+  background-color: #fff;
+
+  //Grow this flex item as much space available since
+  //1st flex item sidenav is 18%, then hotel-view is currently taking 82% of the width
+  flex: 1;
+}
+
+.detail {
+  display: flex;
+  font-size: 1.4rem;
+  padding: 4.5rem;
+  background-color: var(--color-Grey-light-1);
+  border-bottom: 1px solid var(--color-Grey-light-2);
+
+  //NOTE: if we have media query for multiple screen sizes then in that case we should first put the bigger screen size media query and then lower screen size media query
+  @media only screen and (max-width:$bp-medium) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width:$bp-small) {
+    flex-direction: column;
+  }
+}
+
+/*
+NOTE: flex: 0 0 60% this property will only apply on flex items, and to use this parent element must be a flex container, Here we are dividing the two section
+by giving, 1st section width = 60% and by applying flex:1 on other section we are saying to take all the available space 
+*/
+.description {
+  background-color: #fff;
+  box-shadow: var(--light-shadow);
+  padding: 3rem;
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+
+  @media only screen and (max-width:$bp-medium) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+
+  @media only screen and (max-width:$bp-small) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.user-reviews {
+  flex: 1;
+
+  //This code is getting used to center the show all button under user review section
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
